@@ -1,0 +1,29 @@
+type Query {
+    shows(titleFilter: String): [Show]
+    recentPosts(count: Int, offset: Int): [Post]!
+}
+
+type Show {
+    title: String
+    releaseYear: Int
+}
+
+type Post {
+    id: ID!
+    title: String!
+    text: String!
+    category: String
+    author: Author!
+    first_author: Author
+}
+
+type Author {
+    id: ID!
+    name: String!
+    thumbnail: String
+    posts: [Post]!
+}
+
+type Mutation {
+    createPost(title: String!, text: String!, category: String, authorId: String!) : Post!
+}
